@@ -16,7 +16,9 @@ int main() {
                 pclose(pipe);
                 
                 // Print "bup bup" followed by the received number
-                std::cout << "bup bup " << result;
+                if (!result.empty()) {
+                    std::cout << "bup bup " << result;
+                }
             }
         }
     }
