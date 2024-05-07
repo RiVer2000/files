@@ -1,13 +1,17 @@
-import keyboard
-import time
+import tty, sys, termios, serial
+from time import sleep
 
-global releaseListening
-keepListening = True
+ser = serial.Serial('/dev/serial/by-id/usb-Arduino_Srl_Arduino_Uno_85439303333351612151-if00',115200,bytesize=8, parity='N', stopbits=1, timeout=None);
 
-def key_press(key):
-	print(key.name)
-	if key.name == "esc":
-		keepListening = False
-keyboard.on_press(key_press)
-while keepListening:
-	time.sleep(1)
+filedescriptors = termios.tcgetattr(sys.stdin)
+tty.setcbreak(sys.stdin)
+x = 0
+while 1:
+  x=sys.stdin.read(1)[0]
+  ser.write(x.encode('ascii'))
+  print("You pressed", x)
+  if (ser.inWaiting()>0):
+                camflag=ser.read(ser.inWaiting())
+                print(camflag)
+                print("take pic and do stuff")
+                sleep(5)
