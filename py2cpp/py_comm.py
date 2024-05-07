@@ -1,4 +1,9 @@
-import sys 
+# py_comm.py
 
-number = sys.argv[1]
+import sys
+
+number = int(sys.argv[1])
 print("Listening", number)
+
+if number % 42 == 0:
+    print("bup bup", number)
