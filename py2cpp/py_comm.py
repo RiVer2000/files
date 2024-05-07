@@ -1,9 +1,17 @@
-# py_comm.py
-
 import sys
 
-number = int(sys.argv[1])
-print("Listening", number)
+# def receive_integer():
+# Read the integer from stdin
+integer = sys.argv[1]
 
-if number % 42 == 0:
-    print("bup bup", number)
+# Print the received integer
+print("Received integer:", integer)
+
+# Check if the integer is divisible by 6
+if integer % 6 == 0:
+    # Send the integer back to cpp_comm.cpp using stdout
+    sys.stdout.write(str(integer) + "\n")
+    sys.stdout.flush()
+
+# Call the receive_integer function
+# receive_integer()
