@@ -1,4 +1,4 @@
-#!//usr/bin/python3
+#!//home/litterbot/files/env/bin/python3
 
 from picamera2 import Picamera2
 
