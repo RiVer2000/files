@@ -7,9 +7,10 @@ from PIL import Image
 # import matplotlib.pyplot as plt
 
 camflag = 0
+model = mobilenet_v3_small(weights=MobileNet_V3_Small_Weights.DEFAULT)
 
 def trash_detect():
-    model = mobilenet_v3_small(weights=MobileNet_V3_Small_Weights.DEFAULT)
+    
 
     # dir(models)
 
