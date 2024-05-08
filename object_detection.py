@@ -35,7 +35,7 @@ batch_t = torch.unsqueeze(img_t, 0)
 mobilenet_v3_small.eval()
 out = mobilenet_v3_small(batch_t)
 # print(out.shape)
-with open('imagenet_classes.txt') as f:
+with open('trash_classes.txt') as f:
     labels = [line.strip() for line in f.readlines()]
 _, index = torch.max(out, 1)
 percentage = torch.nn.functional.softmax(out, dim=1)[0]*100
