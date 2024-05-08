@@ -11,7 +11,19 @@ while 1:
   ser.write(x.encode('ascii'))
   print("You pressed", x)
   if (ser.inWaiting()>0):
-                camflag=ser.read(ser.inWaiting())
-                print(camflag)
-                print("take pic and do stuff")
-                sleep(5)
+    #camflag=ser.read(ser.inWaiting())
+    #print(camflag)
+    #capture pic
+    #use tensor flow function
+    camflag = 1
+#    if (camflag == 1):
+#      x = 'm'
+#      ser.write(x.encode('ascii')) #deploy arm
+#      x = 'c'
+#      ser.write(x.encode('ascii')) #close gripper
+#      x = 'n'
+#      ser.write(x.encode('ascii')) #stow arm
+#      x = 'o'
+#      ser.write(x.encode('ascii')) #open gripper
+    print("Image Processing Complete")
+    sleep(5)
