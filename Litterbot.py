@@ -6,6 +6,9 @@ ser = serial.Serial('/dev/serial/by-id/usb-Arduino_Srl_Arduino_Uno_8543930333335
 filedescriptors = termios.tcgetattr(sys.stdin)
 tty.setcbreak(sys.stdin)
 x = 0
+rxmsg = ser.readline()
+print(rxmsg.decode('ascii'))
+
 while 1:
   x=sys.stdin.read(1)[0]
   ser.write(x.encode('ascii'))
@@ -25,6 +28,6 @@ while 1:
     else:
       ser.write('b'.encode('ascii')) #stow arm right
       ser.write('o'.encode('ascii')) #open gripper
-
-    print("Image Processing Complete")
     sleep(5)
+    print("Image Processing Complete")
+    ser.flush()
