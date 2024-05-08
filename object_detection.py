@@ -24,7 +24,7 @@ transform = transforms.Compose([
 ])
 
 img = Image.open("capture_0000.jpg")
-img = img.rotate(90)
+img = img.rotate(180)
 
 
 
