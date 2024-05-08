@@ -89,16 +89,30 @@ void turn_right()
 void arm_stow(){
   //Stow position
 joint1servo.write(140);
+current_angleJ1 = 140;
 delay(1000);
 joint2servo.write(80);
+current_angleJ2 = 80;
+//gripperservo.write(50);
+}
+
+void arm_stow_right(){
+  //Stow position
+joint1servo.write(120);
+current_angleJ1 = 120;
+delay(1000);
+joint2servo.write(160);
+current_angleJ2 = 160;
 //gripperservo.write(50);
 }
 
 void arm_deploy(){
 // straight out
 joint1servo.write(18);
+current_angleJ1 = 18;
 delay(1000);
 joint2servo.write(75);
+current_angleJ2 = 75;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -111,9 +125,9 @@ void arm_up()
       current_angleJ1+= 5;
       joint1servo.write(current_angleJ1);
     }
-  else
-    Serial.println("Max position reached");
-  delay(20);
+  //else
+    //Serial.println("Max position reached");
+  //delay(20);
 }
 
 void arm_down()
@@ -124,9 +138,9 @@ void arm_down()
       current_angleJ1-= 5;
       joint1servo.write(current_angleJ1);
     }
-  else
-    Serial.println("Min position reached");
-  delay(20);
+  //else
+    //Serial.println("Min position reached");
+  //delay(20);
 }
 
 
@@ -138,9 +152,9 @@ void arm_right()
       current_angleJ2+= 5;
       joint2servo.write(current_angleJ2);
     }
-  else
-    Serial.println("Max position reached");
-  delay(20);
+  //else
+   // Serial.println("Max position reached");
+  //delay(20);
 }
 
 void arm_left()
@@ -151,15 +165,15 @@ void arm_left()
       current_angleJ2-= 5;
       joint2servo.write(current_angleJ2);
     }
-  else
-    Serial.println("Max position reached");
-  delay(20);
+  //else
+   // Serial.println("Max position reached");
+  //delay(20);
 }
 
 void gripper_close()
 {
   // Close configuration angle
-  gripperservo.write(85);
+  gripperservo.write(80);
   delay(20);
 }
 
@@ -189,6 +203,7 @@ gripperservo.attach(3);
 pinMode(driveLPin, OUTPUT);
 pinMode(driveRPin, OUTPUT);
 
+gripper_open();
 
 }
 
@@ -219,6 +234,10 @@ if(Serial.available()>0){
   case 'n':
     //Serial.println("stow position");
     arm_stow();
+    break;
+  case 'b':
+    //Serial.println("straight out");
+    arm_stow_right();
     break;
   case 'm':
     //Serial.println("straight out");
