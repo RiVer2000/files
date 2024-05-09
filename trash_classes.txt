@@ -894,7 +894,7 @@ wallet
 wardrobe
 warplane
 washbasin
-washer
+paper cup
 water bottle
 water jug
 water tower
