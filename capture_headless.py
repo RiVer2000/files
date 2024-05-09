@@ -12,6 +12,6 @@ def capture():
   
   # np_array = picam2.capture_array()
   # print(np_array)
-  picam2.capture_file("demo.jpg")
+  picam2.capture_file("trash.jpg")
   picam2.stop()
   
