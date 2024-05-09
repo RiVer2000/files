@@ -468,7 +468,7 @@ butcher shop
 cab
 caldron
 candle
-cannon
+paper cup
 canoe
 can opener
 cardigan
