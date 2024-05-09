@@ -768,7 +768,7 @@ rubber eraser
 rugby ball
 rule
 running shoe
-safe
+paper cup
 safety pin
 saltshaker
 sandal
@@ -843,7 +843,7 @@ swimming trunks
 swing
 switch
 syringe
-table lamp
+plastic cup
 tank
 tape player
 teapot
@@ -893,7 +893,7 @@ wall clock
 wallet
 wardrobe
 warplane
-washbasin
+paper cup
 paper cup
 water bottle
 water jug
