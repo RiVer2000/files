@@ -410,7 +410,7 @@ amphibian
 analog clock
 apiary
 apron
-ashcan
+paper cup
 assault rifle
 backpack
 bakery
@@ -645,7 +645,7 @@ matchstick
 maypole
 maze
 measuring cup
-medicine chest
+paper cup
 megalith
 microphone
 microwave
