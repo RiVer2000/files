@@ -859,7 +859,7 @@ tile roof
 toaster
 tobacco shop
 toilet seat
-torch
+paper cup
 totem pole
 tow truck
 toyshop
