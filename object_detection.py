@@ -4,7 +4,7 @@ from torchvision.models import mobilenet_v3_small
 from torchvision.models.mobilenetv3 import MobileNet_V3_Small_Weights
 from torchvision import transforms
 from PIL import Image
-from picamera import PiCamera2
+from picamera2 import PiCamera2
 
 
 camflag = 0
@@ -27,14 +27,24 @@ def trash_detect():
                             std=[0.229, 0.224, 0.225]),
     ])
 
-    
-    picam2 = Picamera2()
 
-    picam2.start_and_capture_file("trash.jpg", show_preview=False)
+    picam2 = Picamera2()
+    config = picam2.create_still_configuration()
+    picam2.configure(config)
+    
+    picam2.start()
+    
+    
+    picam2.capture_file("trash.jpg")
+    picam2.stop()
+    # ######################################
+    # picam2 = Picamera2()
+
+    # picam2.start_and_capture_file("trash.jpg", show_preview=False)
 
     img = Image.open("trash.jpg")
     img = img.rotate(270)
-
+    ########################################
 
 
 
