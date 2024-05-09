@@ -501,8 +501,8 @@ cliff dwelling
 cloak
 clog
 cocktail shaker
-coffee mug
-coffeepot
+paper cup
+paper cup
 coil
 combination lock
 computer keyboard
