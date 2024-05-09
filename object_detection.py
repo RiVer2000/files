@@ -1,3 +1,4 @@
+#!//home/litterbot/files/env/bin/python3
 from torchvision import models
 import torch
 from torchvision.models import mobilenet_v3_small
