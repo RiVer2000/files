@@ -8,12 +8,12 @@ from PIL import Image
 import capture_headless
 
 
-camflag = 0
+
 model = mobilenet_v3_small(weights=MobileNet_V3_Small_Weights.DEFAULT)
 
 def trash_detect():
     
-
+    camflag = 0
     # dir(models)
 
     mobilenet_v3_small = models.mobilenet_v3_small(weights=MobileNet_V3_Small_Weights.DEFAULT)
