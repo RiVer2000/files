@@ -30,9 +30,9 @@ def trash_detect():
     
     picam2 = Picamera2()
 
-    picam2.start_and_capture_file("test.jpg", show_preview=False)
+    picam2.start_and_capture_file("trash.jpg", show_preview=False)
 
-    img = Image.open("test.jpg")
+    img = Image.open("trash.jpg")
     img = img.rotate(270)
 
 
