@@ -6,6 +6,7 @@ from torchvision.models.mobilenetv3 import MobileNet_V3_Small_Weights
 from torchvision import transforms
 from PIL import Image
 import capture_headless
+import time
 
 
 
@@ -30,6 +31,8 @@ def trash_detect():
 
 
     capture_headless.capture()
+    time.sleep(5)
+
     # ######################################
     # picam2 = Picamera2()
 
