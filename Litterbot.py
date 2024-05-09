@@ -25,9 +25,11 @@ while 1:
     
     if (camflag == 1):
       ser.write('n'.encode('ascii')) #stow arm
+      sleep(2)
       ser.write('o'.encode('ascii')) #open gripper
     else:
       ser.write('b'.encode('ascii')) #stow arm right
+      sleep(2)
       ser.write('o'.encode('ascii')) #open gripper
     sleep(5)
     print("Image Processing Complete")
