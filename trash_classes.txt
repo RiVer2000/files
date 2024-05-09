@@ -880,7 +880,7 @@ umbrella
 unicycle
 upright
 vacuum
-vase
+paper cup
 vault
 velvet
 vending machine
