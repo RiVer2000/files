@@ -539,7 +539,7 @@ dome
 doormat
 drilling platform
 drum
-drumstick
+paper cup
 dumbbell
 Dutch oven
 electric fan
