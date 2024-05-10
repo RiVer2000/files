@@ -16,25 +16,22 @@ while 1:
   print("You pressed", x)
   if (ser.inWaiting()>0):
     rx=ser.read(ser.inWaiting())
-    ser.flushInput()
-    ser.flushOutput()
+    print(rx.decode('utf-8'))
     #capture pic
-    #camflag = object_detection.trash_detect()
-    camflag = 1;
-    capture_headless.capture
+#    camflag = object_detection.trash_detect()
     ser.write('m'.encode('ascii')) #deploy arm
     sleep(3)
     ser.write('c'.encode('ascii')) #close gripper
 
-    if (camflag == 1):
-      ser.write('n'.encode('ascii')) #stow arm
-      sleep(2)
-      ser.write('o'.encode('ascii')) #open gripper
-    else:
-      ser.write('b'.encode('ascii')) #stow arm right
-      sleep(2)
-      ser.write('o'.encode('ascii')) #open gripper
+    
+#    if (camflag == 1):
+#     ser.write('n'.encode('ascii')) #stow arm
+#      sleep(2)
+#      ser.write('o'.encode('ascii')) #open gripper
+#    else:
+#      ser.write('b'.encode('ascii')) #stow arm right
+#      sleep(2)
+#      ser.write('o'.encode('ascii')) #open gripper
     sleep(5)
     print("Image Processing Complete")
-    ser.flushInput()
-    ser.flushOutput()
+    ser.flush()
