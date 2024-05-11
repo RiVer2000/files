@@ -14,16 +14,6 @@
 const int SigPin = 2;
 float ping_invcmCosnt = (2*1000000)/(100*344.8); //cmDist=rawTime/invcmCosnt
 
-//IMU Constants and Global Variables
-const int MPU = 0x68; // MPU6050 I2C address
-float AccX, AccY, AccZ;
-float GyroX, GyroY, GyroZ;
-float accAngleX, accAngleY, gyroAngleX, gyroAngleY, gyroAngleZ;
-float roll, pitch, yaw;
-float AccErrorX, AccErrorY, GyroErrorX, GyroErrorY, GyroErrorZ;
-float elapsedTime, currentTime, previousTime;
-int c = 0;
-
 //Arm Servo Objects
 Servo joint1servo;         //range is 0 to 160. midpoint is 90
 Servo joint2servo;         // range is 70 to 160
@@ -35,6 +25,10 @@ int driveRPin = 11;  // PWM for right motor
 int dirLPin = 12;   //direction for left motor  
 int dirRPin = 13;   //direction for right motor
 char keyboard_input = 0;
+
+// Variables to block other actions
+char throw_away = 0;
+bool stop = 0;
 
 
 
@@ -50,7 +44,7 @@ void drive_forward()
   //Drive forward for t time in ms and stop.
   analogWrite(driveLPin,80);
   analogWrite(driveRPin,80);
-  delay(25);
+  delay(20);
 }
 
 void drive_backward()
@@ -61,7 +55,7 @@ void drive_backward()
   //Drive forward for t time in ms and stop.
   analogWrite(driveLPin,80);
   analogWrite(driveRPin,80);
-  delay(25);
+  delay(20);
 }
 
 void turn_left()
@@ -72,7 +66,7 @@ void turn_left()
   //Turn left
   analogWrite(driveLPin,20);
   analogWrite(driveRPin,120);
-  delay(25);
+  delay(20);
 }
 
 void turn_right()
@@ -83,7 +77,7 @@ void turn_right()
   //Turn left
   analogWrite(driveLPin,120);
   analogWrite(driveRPin,20);
-  delay(25);
+  delay(20);
 }
 
 void arm_stow(){
@@ -108,11 +102,12 @@ current_angleJ2 = 160;
 
 void arm_deploy(){
 // straight out
-joint1servo.write(18);
-current_angleJ1 = 18;
-delay(1000);
 joint2servo.write(75);
 current_angleJ2 = 75;
+delay(1000);
+joint1servo.write(8);
+current_angleJ1 = 8;
+
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -127,7 +122,7 @@ void arm_up()
     }
   //else
     //Serial.println("Max position reached");
-  //delay(20);
+  delay(20);
 }
 
 void arm_down()
@@ -140,7 +135,7 @@ void arm_down()
     }
   //else
     //Serial.println("Min position reached");
-  //delay(20);
+  delay(20);
 }
 
 
@@ -154,7 +149,7 @@ void arm_right()
     }
   //else
    // Serial.println("Max position reached");
-  //delay(20);
+  delay(20);
 }
 
 void arm_left()
@@ -167,7 +162,7 @@ void arm_left()
     }
   //else
    // Serial.println("Max position reached");
-  //delay(20);
+  delay(20);
 }
 
 void gripper_close()
@@ -215,21 +210,32 @@ if(Serial.available()>0){
 
   switch(keyboard_input)
 {
+  case 'z':
+    stop = 0;
+    break;
   case 'w':
     //Serial.println("drive forward");
-    drive_forward();
+    if (stop == 0){
+      drive_forward();
+    }
     break;
   case 's':
     //Serial.println("drive backward");
-    drive_backward();
+    if (stop == 0){
+      drive_backward();
+    }
     break;
   case 'a':  
     //Serial.println("left");
-    turn_left();
+    if (stop == 0){
+      turn_left();
+    }
     break;
   case 'd':
     //Serial.println("right");
-    turn_right();
+    if (stop == 0){
+      turn_right();
+    }
     break;
   case 'n':
     //Serial.println("stow position");
@@ -290,8 +296,10 @@ if(Serial.available()>0){
   rawTime = pulseIn(SigPin, HIGH); //measured in u-seconds
   cmDist = rawTime/ping_invcmCosnt;
   //Serial.println(cmDist);
-  if (cmDist<20 && cmDist>0) {
-    Serial.println(1);
+  if (cmDist<15 && cmDist>0) {
+    stop = 1;
+    Serial.println(cmDist);
   }
   
+
 }
