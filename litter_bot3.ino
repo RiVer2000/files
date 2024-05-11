@@ -296,7 +296,7 @@ if(Serial.available()>0){
   rawTime = pulseIn(SigPin, HIGH); //measured in u-seconds
   cmDist = rawTime/ping_invcmCosnt;
   //Serial.println(cmDist);
-  if (cmDist<15 && cmDist>0) {
+  if (cmDist<20 && cmDist>0) {
     stop = 1;
     Serial.println(cmDist);
   }
