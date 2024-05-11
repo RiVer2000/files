@@ -29,7 +29,7 @@ while 1:
     picam2.capture_file("trash.jpg")
     camflag = imagedetect_color.color_detect()
     ser.write('m'.encode('ascii')) #deploy arm
-    sleep(2)
+    sleep(5)
     ser.write('c'.encode('ascii')) #close gripper
     ser.write('c'.encode('ascii'))
 
