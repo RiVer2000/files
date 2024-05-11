@@ -1,8 +1,13 @@
 import tty, sys, termios, serial
 from time import sleep
 import imagedetect_color
-import capture_headless
+from picamera2 import Picamera2
 
+picam2 = Picamera2()
+config = picam2.create_still_configuration()
+picam2.configure(config)
+
+picam2.start()
 ser = serial.Serial('/dev/serial/by-id/usb-Arduino_Srl_Arduino_Uno_85439303333351612151-if00',115200,bytesize=8, parity='N', stopbits=1, timeout=None);
 
 filedescriptors = termios.tcgetattr(sys.stdin)
@@ -21,7 +26,7 @@ while 1:
     ser.flushOutput()
     #capture pic
     #camflag = object_detection.trash_detect()
-    capture_headless.capture()
+    picam2.capture_file("trash.jpg")
     camflag = imagedetect_color.color_detect()
     ser.write('m'.encode('ascii')) #deploy arm
     sleep(3)
