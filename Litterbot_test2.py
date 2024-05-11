@@ -1,6 +1,6 @@
 import tty, sys, termios, serial
 from time import sleep
-import object_detection
+import imagedetect_color
 import capture_headless
 
 ser = serial.Serial('/dev/serial/by-id/usb-Arduino_Srl_Arduino_Uno_85439303333351612151-if00',115200,bytesize=8, parity='N', stopbits=1, timeout=None);
@@ -20,9 +20,8 @@ while 1:
     ser.flushInput()
     ser.flushOutput()
     #capture pic
-    #camflag = object_detection.trash_detect()
-    camflag = 1;
     capture_headless.capture()
+    camflag = imagedetect_color.color_detect()
     ser.write('m'.encode('ascii')) #deploy arm
     sleep(3)
     ser.write('c'.encode('ascii')) #close gripper
@@ -35,6 +34,7 @@ while 1:
       ser.write('b'.encode('ascii')) #stow arm right
       sleep(2)
       ser.write('o'.encode('ascii')) #open gripper
+
     sleep(5)
     print("Image Processing Complete")
     ser.flushInput()
