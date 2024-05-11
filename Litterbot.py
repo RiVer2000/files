@@ -29,12 +29,14 @@ while 1:
     picam2.capture_file("trash.jpg")
     camflag = imagedetect_color.color_detect()
     ser.write('m'.encode('ascii')) #deploy arm
-    sleep(3)
+    sleep(2)
     ser.write('c'.encode('ascii')) #close gripper
+    ser.write('c'.encode('ascii'))
 
     if (camflag == 1):
       ser.write('n'.encode('ascii')) #stow arm
       sleep(2)
+      ser.flushOutput()
       ser.write('o'.encode('ascii')) #open gripper
     else:
       ser.write('b'.encode('ascii')) #stow arm right
@@ -44,3 +46,4 @@ while 1:
     print("Image Processing Complete")
     ser.flushInput()
     ser.flushOutput()
+    ser.write('z'.encode('ascii'))
