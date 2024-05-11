@@ -21,7 +21,7 @@ while 1:
     ser.flushOutput()
     #capture pic
     #camflag = object_detection.trash_detect()
-    capture_headless.capture
+    capture_headless.capture()
     camflag = imagedetect_color.color_detect()
     ser.write('m'.encode('ascii')) #deploy arm
     sleep(3)

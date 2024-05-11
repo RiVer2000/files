@@ -22,7 +22,7 @@ def capture():
 
         # np_array = picam2.capture_array()
         # print(np_array)
-        picam2.capture_file("trash8.jpg")
+        picam2.capture_file("trash.jpg")
         picam2.stop()
     finally:
         camera_busy = False
