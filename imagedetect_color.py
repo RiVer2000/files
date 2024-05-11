@@ -3,7 +3,6 @@ sys.path.append(r'C:\Users\User\AppData\Local\Packages\PythonSoftwareFoundation.
 sys.path.append(r'c:\users\user\appdata\local\packages\pythonsoftwarefoundation.python.3.12_qbz5n2kfra8p0\localcache\local-packages\python312\site-packages')
 
 import numpy as np
-import math
 import cv2
 
 def color_detect():
@@ -17,15 +16,15 @@ def color_detect():
     img_rot = cv2.rotate(hsv_img, cv2.ROTATE_90_CLOCKWISE)
     cropped_image = img_rot[220:3280, 0:2464]
 
-
     # lower and range of white in HSV
-    sensitivity = 90
+    sensitivity = 70
     lower_white = np.array([0,0,255-sensitivity])
     upper_white = np.array([255,sensitivity,255])
 
     mask = cv2.inRange(cropped_image, lower_white, upper_white)
     color_image = cv2.bitwise_and(cropped_image, cropped_image, mask=mask)
-    if (math.prod(mask.shape) > 10000):
+    print(cv2.countNonZero(mask))
+    if (cv2.countNonZero(mask) > 3000):
         flag = 1
     #cv2.imshow('Coloured Image', color_image)
     return flag
