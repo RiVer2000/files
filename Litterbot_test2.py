@@ -21,7 +21,8 @@ while 1:
     ser.flushOutput()
     #capture pic
     capture_headless.capture()
-    camflag = imagedetect_color.color_detect()
+   # camflag = imagedetect_color.color_detect()
+    camflag =1
     ser.write('m'.encode('ascii')) #deploy arm
     sleep(3)
     ser.write('c'.encode('ascii')) #close gripper

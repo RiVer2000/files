@@ -27,8 +27,8 @@ def color_detect():
     color_image = cv2.bitwise_and(cropped_image, cropped_image, mask=mask)
     if (math.prod(mask.shape) > 10000):
         flag = 1
-    cv2.imshow('Coloured Image', color_image)
-return flag
+    #cv2.imshow('Coloured Image', color_image)
+    return flag
 
 # Display the color of the image
 #

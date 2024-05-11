@@ -1,6 +1,7 @@
 import tty, sys, termios, serial
 from time import sleep
 import imagedetect_color
+import capture_headless
 
 ser = serial.Serial('/dev/serial/by-id/usb-Arduino_Srl_Arduino_Uno_85439303333351612151-if00',115200,bytesize=8, parity='N', stopbits=1, timeout=None);
 
