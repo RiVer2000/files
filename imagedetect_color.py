@@ -14,7 +14,7 @@ def color_detect():
     cv2.waitKey(0)
     hsv_img = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
     img_rot = cv2.rotate(hsv_img, cv2.ROTATE_90_CLOCKWISE)
-    cropped_image = img_rot[220:3280, 0:2464]
+    cropped_image = img_rot[300:3280, 0:2464]
 
     # lower and range of white in HSV
     sensitivity = 70
@@ -24,7 +24,7 @@ def color_detect():
     mask = cv2.inRange(cropped_image, lower_white, upper_white)
     color_image = cv2.bitwise_and(cropped_image, cropped_image, mask=mask)
     print(cv2.countNonZero(mask))
-    if (cv2.countNonZero(mask) > 3000):
+    if (cv2.countNonZero(mask) > 25000):
         flag = 1
     #cv2.imshow('Coloured Image', color_image)
     return flag
