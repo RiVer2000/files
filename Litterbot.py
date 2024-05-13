@@ -8,7 +8,7 @@ config = picam2.create_still_configuration()
 picam2.configure(config)
 
 picam2.start()
-ser = serial.Serial('/dev/serial/by-id/usb-Arduino_Srl_Arduino_Uno_85439303333351612151-if00',115200,bytesize=8, parity='N', stopbits=1, timeout=None);
+ser = serial.Serial('/dev/serial/by-id/usb-Arduino_Srl_Arduino_Uno_85439303333351612151-if00',9600,bytesize=8, parity='N', stopbits=1, timeout=None);
 
 filedescriptors = termios.tcgetattr(sys.stdin)
 tty.setcbreak(sys.stdin)
