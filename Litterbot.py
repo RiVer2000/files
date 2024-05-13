@@ -26,7 +26,9 @@ while 1:
     ser.flushOutput()
     #capture pic
     #camflag = object_detection.trash_detect()
+    print("starting image capture")
     picam2.capture_file("trash.jpg")
+    print("completed image capture")
     camflag = imagedetect_color.color_detect()
     ser.write('m'.encode('ascii')) #deploy arm
     print("sending m. deploying arm")
@@ -50,7 +52,7 @@ while 1:
       ser.write('o'.encode('ascii')) #open gripper
       print("sending o. open gripper")
     sleep(5)
-    print("Image Processing Complete")
+    print("Image Processing Complete. sending z to enable driving")
     ser.flushInput()
     ser.flushOutput()
     ser.write('z'.encode('ascii'))
