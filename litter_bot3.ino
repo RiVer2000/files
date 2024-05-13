@@ -168,14 +168,14 @@ void arm_left()
 void gripper_close()
 {
   // Close configuration angle
-  gripperservo.write(80);
+  gripperservo.write(5);
   delay(20);
 }
 
 void gripper_open()
 {
   // Open Configuration angle
-  gripperservo.write(15);
+  gripperservo.write(75);
   delay(20);
 }
 
@@ -296,7 +296,7 @@ if(Serial.available()>0){
   rawTime = pulseIn(SigPin, HIGH); //measured in u-seconds
   cmDist = rawTime/ping_invcmCosnt;
   //Serial.println(cmDist);
-  if (cmDist<20 && cmDist>0 && stop==0) {
+  if (cmDist<16 && cmDist>0 && stop==0) {
     stop = 1;
     Serial.println(cmDist);
   }
