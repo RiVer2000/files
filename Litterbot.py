@@ -35,8 +35,7 @@ while 1:
     sleep(5)
     ser.write('c'.encode('ascii')) #close gripper
     print("sending c. closing gripper")
-    ser.write('c'.encode('ascii'))
-    print("sending c again")
+    sleep(5)
 
     if (camflag == 1):
       ser.write('n'.encode('ascii')) #stow arm
