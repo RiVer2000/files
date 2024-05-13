@@ -186,7 +186,7 @@ void gripper_open()
 
 void setup() {
 // Serial Setup
-Serial.begin(115200); 
+Serial.begin(9600); 
 Serial.println("Use AWSD keys to drive, IJKL keys to command arm:");
 
 // Attach servos
